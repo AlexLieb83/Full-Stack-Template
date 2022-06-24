@@ -1,25 +1,25 @@
 //1. Initialize npm and install dependencies
-//express, dotenv (allows us to hide things), cors (allows us to bypass cors errors), mongodb, ejs (helps us use js and html for DOM), nodemon (--save-dev)
+//express, dotenv (allows us to hide things), cors (allows us to bypass cors errors), mongodb, ejs (helps us use js to build html - basically replaces html), nodemon (--save-dev)
 
 //2. Require dependencies in server.js and .gitignore node_modules
 
 //3. Declare variables - add .env file (to hide secret things, db pw etc)
 //******* .env goes into gitignore
 
-//4. Connect to MongoDB - add connection string to .env file
+//4. Create gitignore file and push to github
 
-//5. Create Port
+//5. Connect to MongoDB - add connection string to .env file
+
+//6. Create Port
 
 // ----- Test MongoDB and Port Connection
 //node server.js or nodemon (package.json, "dev": "nodemon server.js")
 
-//6. Set middleware
-
-//7. Create gitignore file
+//7. Set middleware
 
 //8. Create Public and views folders - add main.js and style.css to Public and index.ejs to views
 
-//9. from root, init local git repo and commit
+//9. Add content to main.js, style.css, index.ejs - link the css and js to ejs
 
 //10. Create heroku repo
 //heroku login

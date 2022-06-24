@@ -17,6 +17,7 @@ MongoClient.connect(dbConnectionString).then((client) => {
 });
 
 //Middleware
+//look into ejs and show it
 app.set("view engine", "ejs");
 //serves up all files from public folder
 app.use(express.static("public"));
