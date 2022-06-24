@@ -3,7 +3,7 @@
 
 //2. Require dependencies in server.js and .gitignore node_modules
 
-//3. Declare variables
+//3. Declare variables - add .env file (to hide secret things, db pw etc)
 
 //4. Connect to MongoDB - add connection string to .env file
 
