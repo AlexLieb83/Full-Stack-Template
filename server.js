@@ -16,7 +16,16 @@ MongoClient.connect(dbConnectionString).then((client) => {
   collection = db.collection("testk l");
 });
 
-//Set up our server's location PORT - also cl to confirm it's running and which port
+//Middleware
+app.set("view engine", "ejs");
+//serves up all files from public folder
+app.use(express.static("public"));
+//handles urls
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
+//Set up our server's location PORT - also cl to confirm it's running
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server is running on port`);
 });
