@@ -2,21 +2,24 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const MongoClient = require("mongodb").MongoClient;
+const mongoose = require("mongoose");
 require("dotenv").config();
+const TestModel = require("./models/schema");
 
-let db,
-  dbConnectionString = process.env.DB_STRING,
-  dbName = "templateDB",
-  collection;
+//connect to db
+//use async await to only show we are connected after we have established a connection
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true });
+    console.log(`Connected to database: ${mongoose.connection.name}`);
+  } catch (err) {
+    console.log("Failed to connect", err);
+  }
+};
 
-MongoClient.connect(dbConnectionString).then((client) => {
-  console.log("Connected to Database");
-  db = client.db("templateDB");
-  collection = db.collection("testk l");
-});
+connectDB();
 
-//Middleware
+//Middlewaref
 //look into ejs and show it
 app.set("view engine", "ejs");
 //serves up all files from public folder
@@ -25,6 +28,18 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+app.get("/", async (req, res) => {
+  try {
+    //get data from DB - specific collection
+    //after data is found, then render ejs and pass data so that it can render on page
+    const content = await TestModel.find();
+    console.log(content);
+    res.render("index.ejs", { contentKey: content });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+});
 
 //Set up our server's location PORT - also cl to confirm it's running
 app.listen(process.env.PORT || PORT, () => {
